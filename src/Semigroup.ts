@@ -37,11 +37,11 @@ export const string: Semigroup<string> = {
   concat: (a, b) => `${a} ${b}`
 }
 
-export const both: Semigroup<boolean> = {
+export const and: Semigroup<boolean> = {
   concat: (a, b) => a && b
 }
 
-export const either: Semigroup<boolean> = {
+export const or: Semigroup<boolean> = {
   concat: (a, b) => a || b
 }
 
@@ -64,11 +64,9 @@ export const getApplySemigroup =
       )
   })
 
-export function record<R extends Record<string, any>>(
-  semigroups: {
-    [K in keyof R]: Semigroup<R[K]>
-  }
-): Semigroup<R> {
+export function record<R extends Record<string, any>>(semigroups: {
+  [K in keyof R]: Semigroup<R[K]>
+}): Semigroup<R> {
   return {
     concat: (x, y) =>
       Object.keys(semigroups).reduce((acc, key) => {
