@@ -1,6 +1,6 @@
 {
   "name": "@benjstephenson/kittens-ts-core",
-  "version": "0.0.5",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/src/index.js",
   "types": "dist/src/index.d.ts",
@@ -8,12 +8,9 @@
     "type": "git",
     "url": "git://github.com/benjstephenson/kittens-ts-core"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/benjstephenson"
-  },
   "scripts": {
     "compile": "tsc --extendedDiagnostics -p .",
-    "test": "jasmine --config=jasmine.json",
+    "test": "npm run compile && jasmine --config=jasmine.json",
     "prepare": "husky install"
   },
   "author": "Benji Stephenson",

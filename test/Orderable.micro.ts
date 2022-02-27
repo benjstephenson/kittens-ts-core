@@ -12,8 +12,8 @@ describe('Orderable instances', () => {
 
     const catM = Ord.getMonoid<Cat>()
 
-    const bylives = Ord.contramap((x: Cat) => x.lives, Ord.number)
-    const byName = Ord.contramap((x: Cat) => x.name, Ord.string)
+    const bylives = Ord.contramap((x: Cat) => x.lives)(Ord.number)
+    const byName = Ord.contramap((x: Cat) => x.name)(Ord.string)
     const sortableCat = M.fold(catM)([bylives, byName])
 
     fc.assert(

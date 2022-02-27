@@ -10,8 +10,8 @@ export interface IdF extends HKT {
 }
 
 export const identityM: Monad<IdF> = {
-  ap: (fa, fab) => fab(fa),
+  ap: fab => fab,
   of: a => a,
-  map: (f, a) => f(a),
-  flatMap: (f, a) => f(a)
+  map: f => f,
+  flatMap: f => f
 }

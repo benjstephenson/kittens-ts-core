@@ -25,7 +25,10 @@ export const number: Orderable<number> = from(primitive)
 export const string: Orderable<string> = from(primitive)
 export const boolean: Orderable<boolean> = from(primitive)
 
-export const contramap = <A, B>(f: (b: B) => A, ord: Orderable<A>): Orderable<B> => from((x: B, y: B) => ord.compare(f(x), f(y)))
+export const contramap =
+  <A, B>(f: (b: B) => A) =>
+  (ord: Orderable<A>): Orderable<B> =>
+    from((x: B, y: B) => ord.compare(f(x), f(y)))
 
 export const contravariant: Contravariant<OrderableF> = {
   contramap
