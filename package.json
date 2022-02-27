@@ -8,6 +8,9 @@
     "type": "git",
     "url": "git://github.com/benjstephenson/kittens-ts-core"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/benjstephenson"
+  },
   "scripts": {
     "compile": "tsc --extendedDiagnostics -p .",
     "test": "npm run compile && jasmine --config=jasmine.json",
