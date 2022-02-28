@@ -1,6 +1,7 @@
 import { assertThat } from 'mismatched'
 import * as fc from 'fast-check'
-import * as S from '../src/Semigroup'
+import * as semigroup from '../src/Semigroup'
+import * as record from '../src/Record'
 
 describe('Semigroup instances', () => {
   it('record semigroup', () => {
@@ -9,9 +10,9 @@ describe('Semigroup instances', () => {
       age: number
     }
 
-    const catConcat = S.record<Cat>({
-      name: S.string,
-      age: S.sum
+    const catConcat = record.semigroup<Cat>({
+      name: semigroup.string,
+      age: semigroup.sum
     })
 
     fc.assert(

@@ -1,7 +1,7 @@
 import { assertThat } from 'mismatched'
 import * as fc from 'fast-check'
 import * as Ord from '../src/Orderable'
-import * as M from '../src/Monoid'
+import * as monoid from '../src/Monoid'
 
 describe('Orderable instances', () => {
   it('derive sortable instance', () => {
@@ -14,7 +14,7 @@ describe('Orderable instances', () => {
 
     const bylives = Ord.contramap((x: Cat) => x.lives)(Ord.number)
     const byName = Ord.contramap((x: Cat) => x.name)(Ord.string)
-    const sortableCat = M.fold(catM)([bylives, byName])
+    const sortableCat = monoid.fold(catM)([bylives, byName])
 
     fc.assert(
       fc.property(
