@@ -1,5 +1,4 @@
 import { Apply } from './Apply'
-import { pipe } from './functions'
 import { HKT, Kind } from './HKT'
 
 export interface Semigroup<A> {
@@ -59,14 +58,9 @@ export const getApplySemigroup =
   <F extends HKT, R, E>(F: Apply<F>) =>
   <A>(S: Semigroup<A>): Semigroup<Kind<F, R, E, A>> => ({
     concat: (fa, fb) =>
-      pipe(
+      F.ap(
         fa,
-        F.ap(
-          pipe(
-            fb,
-            F.map(a => b => S.concat(a, b))
-          )
-        )
+        F.map(a => b => S.concat(a, b), fb)
       )
   })
 
